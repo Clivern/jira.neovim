@@ -4,51 +4,52 @@ import { Icon } from "astro-icon";
 
 const features = [
   {
-    title: "Bring Your Own Framework",
+    title: "Host group management",
     description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
+      "The ability to group multiple hosts together for easier management and monitoring",
     icon: "bx:bxs-briefcase",
   },
   {
-    title: "100% Static HTML, No JS",
+    title: "Host management",
     description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
+      "The ability to add, edit, and remove individual hosts for monitoring",
     icon: "bx:bxs-window-alt",
   },
   {
-    title: "On-Demand Components",
+    title: "Downtime scheduling",
     description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
+      "The ability to schedule periods of time when monitoring will be paused for maintenance or other reasons",
     icon: "bx:bxs-data",
   },
   {
-    title: "Broad Integration",
+    title: "Historical data",
     description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
+      "The ability to view historical data on host uptime, latency, resource usage and other related analytics.",
     icon: "bx:bxs-bot",
   },
   {
-    title: "SEO Enabled",
+    title: "Customizable Alerting",
     description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
+      "The ability to set up custom alerts based on specific conditions, such as high latency, host downtime, slow performance, high error rates or certificate expiration.",
     icon: "bx:bxs-file-find",
   },
   {
-    title: "Community",
+    title: "Integrations",
     description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
+      "Ability to integrate with other services such as slack, PagerDuty, OpsGenie, SMS, Email and more.",
     icon: "bx:bxs-user",
   },
 ];
 ---
 
 <div class="mt-16 md:mt-0">
+  <!--
   <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Everything you need to start a website
+    Everything you need to monitor a website
   </h2>
+  -->
   <p class="text-lg mt-4 text-slate-600">
-    Astro comes batteries included. It takes the best parts of state-of-the-art
-    tools and adds its own innovations.
+    Uptimedog provides a comprehensive set of features for monitoring applications:
   </p>
 </div>
 
