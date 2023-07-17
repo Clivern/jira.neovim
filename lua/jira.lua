@@ -73,10 +73,10 @@ local function execute(config)
       return
     end
 
-    local tickets = jira.get_jira_tickets(token, domain)
+    local tickets = get_jira_tickets(token, domain)
 
     if next(tickets) ~= nil then
-      jira.show_tickets(tickets)
+      show_tickets(tickets)
     end
   end, {})
 
