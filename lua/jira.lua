@@ -1,5 +1,5 @@
 -- Jira Module
-local http = require("plenary.http")
+local curl = require("plenary.curl")
 local popup = require("plenary.popup")
 
 local M = {}
@@ -24,17 +24,15 @@ local function get_jira_tickets(token, domain)
     maxResults = 100,
   }
 
-  local response = http.request({
-    url = url,
-    method = "GET",
+  local response = curl.get(url, {
     headers = headers,
-    params = params,
+    query = params,
   })
 
   if response.status == 200 then
     return vim.json.decode(response.body)
   else
-    vim.notify("Failed to fetch Jira tickets", vim.log.levels.ERROR)
+    vim.notify("Failed to fetch Jira tickets: " .. response.body, vim.log.levels.ERROR)
     return {}
   end
 end
