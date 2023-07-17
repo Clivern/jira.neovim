@@ -10,22 +10,15 @@ A Neovim plugin to interact with Jira, allowing you to fetch and display Jira ti
 
 ### Installation
 
-#### Using Packer
-
-Add the following to your `init.lua`:
-
-```lua
-use {
-  path = "/path/to/nvim-jira",
-}
-```
-
 #### Using Lazy.nvim
 
 Add the following to your `init.lua`:
 
 ```lua
-{ path = "/path/to/nvim-jira" },
+{
+    "clivern/jira.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+}
 ```
 
 ### Configuration
@@ -33,20 +26,11 @@ Add the following to your `init.lua`:
 To use this plugin, you need to set your Jira API token and domain in your Neovim configuration file (`init.lua`):
 
 ```lua
-vim.g.jira_token = "your_jira_api_token"
-vim.g.jira_domain = "your_jira_domain.atlassian.net"
+require("jira").setup({
+    token = "your_jira_api_token"
+    domain = "your_jira_domain.atlassian.net"
+})
 ```
-
-### Usage
-
-1. Open Neovim.
-2. Press `jt` to fetch and display your Jira tickets in a popup window.
-3. You can close the popup by pressing `q`.
-
-### Requirements
-
-- Neovim
-- `plenary.nvim` (automatically installed if using a plugin manager)
 
 ### Contributing
 

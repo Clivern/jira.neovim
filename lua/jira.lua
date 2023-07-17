@@ -1,10 +1,18 @@
---- Jira Module
-local M = {}
-
+-- Jira Module
 local http = require("plenary.http")
 local popup = require("plenary.popup")
 
-function M.get_jira_tickets(token, domain)
+local M = {}
+
+local config = {
+  token = "",
+  domain = "",
+}
+
+M.config = config
+
+-- This function gets Jira tickets
+local function get_jira_tickets(token, domain)
   local headers = {
     ["Authorization"] = "Bearer " .. token,
     ["Content-Type"] = "application/json",
@@ -31,8 +39,10 @@ function M.get_jira_tickets(token, domain)
   end
 end
 
-function M.show_tickets(tickets)
+-- This function shows tickets
+local function show_tickets(tickets)
   local lines = {}
+
   for _, ticket in ipairs(tickets.issues) do
     table.insert(lines, ticket.fields.summary)
   end
@@ -52,6 +62,32 @@ function M.show_tickets(tickets)
 
   -- Add mappings to close the window
   vim.api.nvim_buf_set_keymap(bufnr, "n", "q", ":close<CR>", { silent = true, nowait = true, noremap = true })
+end
+
+-- Execute the plugin
+local function execute(config)
+  vim.api.nvim_create_user_command("Jira", function(opts)
+    local token = config.token
+    local domain = config.domain
+
+    if not token or not domain then
+      vim.notify("Please set Jira token and domain in your Neovim config", vim.log.levels.ERROR)
+      return
+    end
+
+    local tickets = jira.get_jira_tickets(token, domain)
+
+    if next(tickets) ~= nil then
+      jira.show_tickets(tickets)
+    end
+  end, {})
+
+  vim.notify("Jira plugin loaded")
+end
+
+M.setup = function(params)
+  M.config = vim.tbl_extend("force", {}, M.config, params or {})
+  execute(M.config)
 end
 
 return M
