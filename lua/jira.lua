@@ -62,6 +62,49 @@ local function show_tickets(tickets)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "q", ":close<CR>", { silent = true, nowait = true, noremap = true })
 end
 
+-- Mock function to simulate getting Jira tickets
+local function mock_get_jira_tickets(token, domain)
+  -- Mock data
+  local mock_data = {
+    issues = {
+      {
+        key = "PROJ-1",
+        fields = {
+          summary = "Implement new feature",
+          description = "As a user, I want to be able to sort my tasks by priority",
+          issuetype = { name = "Story" }
+        }
+      },
+      {
+        key = "PROJ-2",
+        fields = {
+          summary = "Fix login bug",
+          description = "Users are unable to log in using social media accounts",
+          issuetype = { name = "Bug" }
+        }
+      },
+      {
+        key = "PROJ-3",
+        fields = {
+          summary = "Update documentation",
+          description = "Update the API documentation with the latest endpoints",
+          issuetype = { name = "Task" }
+        }
+      }
+    },
+    total = 3
+  }
+
+  -- Simulate successful response
+  if token ~= "" and domain ~= "" then
+    return mock_data
+  else
+    -- Simulate error response
+    vim.notify("Failed to fetch Jira tickets: Invalid token or domain", vim.log.levels.ERROR)
+    return {}
+  end
+end
+
 -- Execute the plugin
 local function execute(config)
   vim.api.nvim_create_user_command("Jira", function(opts)
@@ -73,7 +116,7 @@ local function execute(config)
       return
     end
 
-    local tickets = get_jira_tickets(token, domain)
+    local tickets = mock_get_jira_tickets(token, domain)
 
     if next(tickets) ~= nil then
       show_tickets(tickets)
