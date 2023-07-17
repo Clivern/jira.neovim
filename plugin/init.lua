@@ -16,3 +16,4 @@ vim.api.nvim_create_user_command("JiraTickets", function(opts)
   end
 end, {})
 
+vim.notify("Plugin 'jira.neovim' is loaded!")
