@@ -70,14 +70,7 @@ local function mock_get_jira_tickets(token, domain)
     total = 3
   }
 
-  -- Simulate successful response
-  if token ~= "" and domain ~= "" then
-    return mock_data
-  else
-    -- Simulate error response
-    vim.notify("Failed to fetch Jira tickets: Invalid token or domain", vim.log.levels.ERROR)
-    return {}
-  end
+  return mock_data
 end
 
 -- This function shows tickets
