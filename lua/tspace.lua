@@ -96,7 +96,7 @@ local function execute(config)
       return
     end
     add_project(opts.fargs[1], opts.fargs[2])
-  end, { nargs = 2 })
+  end, { nargs = "*" })
 
   -- Command to remove project by name
   vim.api.nvim_create_user_command("TukRemove", function(opts)
@@ -105,7 +105,7 @@ local function execute(config)
       return
     end
     remove_project(opts.fargs[1])
-  end, { nargs = 1 })
+  end, { nargs = "*" })
 
   -- Command to open a neovim tab and navigate to project path by name
   vim.api.nvim_create_user_command("TukOpen", function(opts)
@@ -121,7 +121,7 @@ local function execute(config)
     else
       vim.notify("Project not found: " .. opts.fargs[1], vim.log.levels.ERROR)
     end
-  end, { nargs = 1 })
+  end, { nargs = "*" })
 
   vim.notify("Tuk plugin loaded")
 end
