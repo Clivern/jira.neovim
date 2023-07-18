@@ -1,12 +1,6 @@
-## Jira Neovim Plugin
+## Tuk Neovim Plugin
 
-A Neovim plugin to interact with Jira, allowing you to fetch and display Jira tickets directly within your editor.
-
-### Features
-
-- **Fetch Jira Tickets**: Easily retrieve a list of Jira tickets using your API token.
-- **Display Tickets**: View ticket summaries in a popup window.
-- **Customizable**: Configure your Jira API token and domain in your Neovim settings.
+A Set of Neovim modules to speed up development.
 
 ### Installation
 
@@ -16,19 +10,18 @@ Add the following to your `init.lua`:
 
 ```lua
 {
-    "clivern/jira.nvim",
+    "clivern/tuk.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
 }
 ```
 
 ### Configuration
 
-To use this plugin, you need to set your Jira API token and domain in your Neovim configuration file (`init.lua`):
+To enable workspaces module:
 
 ```lua
-require("jira").setup({
-    token = "your_jira_api_token"
-    domain = "your_jira_domain.atlassian.net"
+require("tspace").setup({
+    config = "~/.tuk.json"
 })
 ```
 
