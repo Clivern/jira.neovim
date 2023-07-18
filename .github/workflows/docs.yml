@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - main
-name: docs
+name: Docs Build
 
 jobs:
   docs:

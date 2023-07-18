@@ -1,6 +1,6 @@
 ---
 on: [push, pull_request]
-name: lint-test
+name: Lint/Test
 
 jobs:
   stylua:
@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         nvim-versions: ['stable', 'nightly']
-    name: test
+    name: Test
     steps:
       - name: checkout
         uses: actions/checkout@v4
