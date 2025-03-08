@@ -21,23 +21,15 @@ FEATURES ~
 INSTALLATION ~
 
 
-USING PACKER
+USING LAZY.NVIM
 
 Add the following to your `init.lua`
 
 >lua
-    use {
-      path = "/path/to/nvim-jira",
+    {
+        "clivern/jira.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
     }
-<
-
-
-USINGLAZY.NVIM
-
-Add the following to your `init.lua`
-
->lua
-    { path = "/path/to/nvim-jira" },
 <
 
 
@@ -47,22 +39,11 @@ Touse this plugin, you need to set your Jira API token and domain in your
 Neovim configuration file (`init.lua`):
 
 >lua
-    vim.g.jira_token = "your_jira_api_token"
-    vim.g.jira_domain = "your_jira_domain.atlassian.net"
+    require("jira").setup({
+        token = "your_jira_api_token"
+        domain = "your_jira_domain.atlassian.net"
+    })
 <
-
-
-USAGE ~
-
-1. Open Neovim.
-2. Press `jt` to fetch and display your Jira tickets in a popup window.
-3. You can close the popup by pressing `q`.
-
-
-REQUIREMENTS ~
-
-- Neovim
-- `plenary.nvim` (automatically installed if using a plugin manager)
 
 
 CONTRIBUTING ~
