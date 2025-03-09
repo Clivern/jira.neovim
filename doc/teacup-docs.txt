@@ -20,7 +20,15 @@ Add the following to your `init.lua`
 >lua
     {
         "clivern/tuk.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            {
+                "grapp-dev/nui-components.nvim",
+                dependencies = {
+                    "MunifTanjim/nui.nvim"
+                }
+            }
+        }
     }
 <
 
