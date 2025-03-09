@@ -1,21 +1,13 @@
-*teacup-docs.txt*        For Neovim >= 0.8.0        Last change: 2025 March 08
+*teacup-docs.txt*        For Neovim >= 0.8.0        Last change: 2025 March 09
 
 ==============================================================================
 Table of Contents                              *teacup-docs-table-of-contents*
 
-  - Jira Neovim Plugin                        |teacup-docs-jira-neovim-plugin|
+  - Tuk Neovim Plugin                          |teacup-docs-tuk-neovim-plugin|
 
-JIRA NEOVIM PLUGIN                            *teacup-docs-jira-neovim-plugin*
+TUK NEOVIM PLUGIN                              *teacup-docs-tuk-neovim-plugin*
 
-A Neovim plugin to interact with Jira, allowing you to fetch and display Jira
-tickets directly within your editor.
-
-
-FEATURES ~
-
-- **Fetch Jira Tickets**Easily retrieve a list of Jira tickets using your API token.
-- **Display Tickets**View ticket summaries in a popup window.
-- **Customizable**Configure your Jira API token and domain in your Neovim settings.
+A Set of Neovim modules to speed up development.
 
 
 INSTALLATION ~
@@ -27,7 +19,7 @@ Add the following to your `init.lua`
 
 >lua
     {
-        "clivern/jira.nvim",
+        "clivern/tuk.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
     }
 <
@@ -35,13 +27,11 @@ Add the following to your `init.lua`
 
 CONFIGURATION ~
 
-Touse this plugin, you need to set your Jira API token and domain in your
-Neovim configuration file (`init.lua`):
+Toenable workspaces module:
 
 >lua
-    require("jira").setup({
-        token = "your_jira_api_token"
-        domain = "your_jira_domain.atlassian.net"
+    require("tspace").setup({
+        config = "~/.tuk.json"
     })
 <
 
